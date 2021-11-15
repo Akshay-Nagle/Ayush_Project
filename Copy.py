@@ -2,7 +2,7 @@ import customUtils
 import os      # For File Manipulations like get paths, rename
 from flask import Flask, flash, request, redirect, render_template
 from werkzeug.utils import secure_filename
-# from flask_mail import Mail
+from flask_mail import Mail
 import shutil
 import csv
 import openpyxl
@@ -73,39 +73,25 @@ def file():
       if "mail" in request.form:
          sendmails()
          flash('Mails done')
-
-
-   return redirect('/')
-"""def index():
-      if "roll wise" in request.form:
-         prepareResultForPresentStudents()
-         flash('RN wise done')
-      if "concise" in request.form:
-         prepareConciseMarksheet()
-         flash('Concise done')
-      if "mail" in request.form:
-         sendmails()
-         flash('Mails done')
-
-mail = Mail(app) # instantiate the mail class
-
-# configuration of mail
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'yourId@gmail.com'
-app.config['MAIL_PASSWORD'] = '*****'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-mail = Mail(app)
+        
+      mail = Mail(app) # instantiate the mail class
    
-# message object mapped to a particular URL ‘/’
-@app.route("/")
-def index():
-   msg = Message('Hello',sender ='yourId@gmail.com',recipients = ['receiver’sid@gmail.com'])
-   msg.body = 'Hello Flask message sent from Flask-Mail'
-   mail.send(msg)
-   return 'Sent'
-"""
+      # configuration of mail
+      app.config['MAIL_SERVER']='smtp.gmail.com'
+      app.config['MAIL_PORT'] = 465
+      app.config['MAIL_USERNAME'] = 'csxxx20xx@gmail.com'
+      app.config['MAIL_PASSWORD'] = 'Whatever123'
+      app.config['MAIL_USE_TLS'] = False
+      app.config['MAIL_USE_SSL'] = True
+      mail = Mail(app)
+      
+      # message object mapped to a particular URL ‘/’
+      def sendmails():
+         msg = Message('Hello',sender ='csxxx20xx@gmail.com',recipients = [])
+         msg.body = 'Dear Student,\nCSXXX 20XX recent paper marks are attached for reference.\n+5 Correct, -1 for wrong.'
+         mail.send(msg)
+   return("/")
+
 if __name__ == "__main__":
     app.run()
     
